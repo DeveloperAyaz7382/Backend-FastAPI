@@ -12,6 +12,9 @@ class UserLogin(BaseModel):
     password: str
     
 
+from typing import Optional
+from pydantic import BaseModel
+
 class ProductBase(BaseModel):
     title: str
     description: str
@@ -24,13 +27,20 @@ class ProductBase(BaseModel):
     sku: Optional[str] = None
     barcode: Optional[str] = None
     tags: Optional[str] = None
-    image_url: Optional[str] = None  # New field for image URL
+    image_url: Optional[str] = None  # URL to the product image
 
 class ProductCreate(ProductBase):
     pass
+
+# class Product(ProductBase):
+#     id: int
+
+#     class Config:
+#         orm_mode = True
+
 
 class Product(ProductBase):
     id: int
 
     class Config:
-        from_attributes = True
+        from_attributes = True  # Make sure you're using from_attributes instead of orm_mode

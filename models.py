@@ -13,21 +13,19 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
 
-class Product(Base):
+class ProductDB(Base):
     __tablename__ = "products"
-
+    
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    description = Column(String)
-    price = Column(Float)
-    compare_at_price = Column(Float)
-    cost_per_item = Column(Float)
-    profit = Column(Float, default=0.0)
-    margin = Column(Float, default=0.0)
+    title = Column(String, index=True, nullable=False)
+    description = Column(String, nullable=False)
+    price = Column(Float, nullable=False)
+    compare_at_price = Column(Float, nullable=True)
+    cost_per_item = Column(Float, nullable=True)
     quantity = Column(Integer, default=0)
-    category = Column(String)
-    vendor = Column(String)
-    sku = Column(String)
-    barcode = Column(String)
-    tags = Column(String)
-    image_url = Column(String, nullable=True)  # New field to store image UR
+    category = Column(String, nullable=True)
+    vendor = Column(String, nullable=True)
+    sku = Column(String, nullable=True)
+    barcode = Column(String, nullable=True)
+    tags = Column(String, nullable=True)
+    image_url = Column(String, nullable=True)
