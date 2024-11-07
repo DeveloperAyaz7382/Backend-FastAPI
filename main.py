@@ -11,6 +11,8 @@ from fastapi.responses import FileResponse
 import models, schemas, crud
 from database import engine, SessionLocal
 import logging  # Import the logging module at the start of the script
+
+
 # Create database tables
 models.Base.metadata.create_all(bind=engine)
 
