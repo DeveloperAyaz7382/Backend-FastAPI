@@ -1,6 +1,6 @@
+
 from pydantic import BaseModel
 from typing import Optional
-
 
 class UserRegister(BaseModel):
     name: str
@@ -10,10 +10,6 @@ class UserRegister(BaseModel):
 class UserLogin(BaseModel):
     email: str
     password: str
-    
-
-from typing import Optional
-from pydantic import BaseModel
 
 class ProductBase(BaseModel):
     title: str
@@ -21,20 +17,27 @@ class ProductBase(BaseModel):
     price: float
     compare_at_price: Optional[float] = None
     cost_per_item: Optional[float] = None
-    quantity: int = 0
-    category: Optional[str] = None
+    profit: Optional[float] = None
+    margin: Optional[float] = None
+    track_quantity: Optional[bool] = None
+    status: Optional[str] = None
+    sales_channels: Optional[str] = None
+    markets: Optional[str] = None
+    product_type: Optional[str] = None
     vendor: Optional[str] = None
     sku: Optional[str] = None
     barcode: Optional[str] = None
+    collections: Optional[str] = None
     tags: Optional[str] = None
-    image_url: Optional[str] = None  # URL to the product image
+    image_url: Optional[str] = None
+    category: Optional[str] = None  # Make category optional
+
 
 class ProductCreate(ProductBase):
     pass
 
-
 class Product(ProductBase):
-    id: int
+  id: int
 
-    class Config:
-        from_attributes = True  # Make sure you're using from_attributes instead of orm_mode
+class Config:
+     from_attributes = True  # Make sure you're using from_attributes instead of orm_mode

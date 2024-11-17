@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, Float, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from database import Base
+from sqlalchemy.orm import relationship
+from sqlalchemy import Boolean, Column, Integer, String, Float, Date
 
 
 Base = declarative_base()
@@ -13,19 +14,26 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
 
-class ProductDB(Base):
+class Product(Base):
     __tablename__ = "products"
-    
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True, nullable=False)
-    description = Column(String, nullable=False)
-    price = Column(Float, nullable=False)
+    title = Column(String, index=True)
+    description = Column(String)
+    category = Column(String)
+    price = Column(Float)
     compare_at_price = Column(Float, nullable=True)
-    cost_per_item = Column(Float, nullable=True)
-    quantity = Column(Integer, default=0)
-    category = Column(String, nullable=True)
-    vendor = Column(String, nullable=True)
-    sku = Column(String, nullable=True)
-    barcode = Column(String, nullable=True)
-    tags = Column(String, nullable=True)
+    cost_per_item = Column(Float)
+    profit = Column(Float)
+    margin = Column(Float)
+    track_quantity = Column(Boolean)
+    sku = Column(String)
+    barcode = Column(String)
+    status = Column(String)
+    sales_channels = Column(String)
+    markets = Column(String)
+    product_type = Column(String)
+    vendor = Column(String)
+    collections = Column(String)
+    tags = Column(String)
     image_url = Column(String, nullable=True)
+  
